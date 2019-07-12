@@ -12,7 +12,7 @@ export default async function askingArticleSubmission(params) {
       {
         type: 'text',
         text:
-          '請點擊上面的「送出按鈕」送出目前的訊息到資料庫，或轉傳其他訊息。',
+          'Please click on the "Send button" above to send the current message to the database or transfer other messages.',
       },
     ];
   } else {
@@ -34,7 +34,7 @@ export default async function askingArticleSubmission(params) {
     replies = [
       {
         type: 'text',
-        text: `您回報的訊息已經被收錄至：${articleUrl}`,
+        text: `The message you have returned has been included to: ${articleUrl}`,
       },
       createArticleShareReply(articleUrl, reason),
     ];

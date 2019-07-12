@@ -1,7 +1,8 @@
 var fs = require('fs');
 var readline = require('readline');
-var google = require('googleapis');
+const { google } = require('googleapis');
 var OAuth2 = google.auth.OAuth2;
+//const { OAuth2 } = require('google-auth-library');
 
 // If modifying these scopes, delete your previously saved credentials
 // at ~/.credentials/drive-nodejs-quickstart.json
@@ -10,7 +11,7 @@ var ENV_FILE_PATH = '.env';
 let secrets;
 
 // Load client secrets from a local file.
-fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+fs.readFile('credentials.json', function processClientSecrets(err, content) {
   if (err) {
     console.log('Error loading client secret file: ' + err);
     return;

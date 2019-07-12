@@ -4,7 +4,7 @@ export default function defaultState(params) {
   replies = [
     {
       type: 'text',
-      text: '我們看不懂 QQ\n大俠請重新來過。',
+      text: 'We dont understand,\nplease come back.',
     },
   ];
   state = '__INIT__';

@@ -66,31 +66,31 @@ export default async function askingReplyFeedback(params) {
       15
     )}」 ${createTypeWords(
       GetReply.type
-    )}喔！\n\n請至 ${articleUrl} 看看鄉親們針對這則訊息的回應、理由，與相關的出處唷！`;
+    )}Oh! \n\nPlease go to ${articleUrl} to see the responses, reasons, and related sources of the villagers.！`;
 
     replies = [
       {
         type: 'text',
         text:
           feedbackCount > 1
-            ? `感謝您與其他 ${feedbackCount - 1} 人的回饋。`
-            : '感謝您的回饋，您是第一個評論這個回應的人 :)',
+            ? `Thank you for your feedback with other  ${feedbackCount - 1} people`
+            : 'Thank you for your feedback, you are the first to comment on this response. :)',
       },
       {
         type: 'template',
-        altText: `📲 別忘了把上面的回應轉傳回您的聊天室，給其他人也看看！\n💁 若您認為自己能回應得更好，歡迎到 ${articleUrl} 提交新的回應唷！`,
+        altText: `📲 Don't forget to pass the above response back to your chat room and show it to others！\n💁 If you think you can respond better, welcome to ${articleUrl} Submit a new response!`,
         template: {
           type: 'confirm',
-          text: `📲 別忘了把上面的回應轉傳回您的聊天室，給其他人也看看！\n💁 若您認為自己能回應得更好，歡迎提交新的回應唷！`,
+          text: `📲 Don't forget to pass the above response back to your chat room and show it to others! \n💁 If you think you can respond better, please feel free to submit a new response！`,
           actions: [
             {
               type: 'uri',
-              label: '分享給朋友',
+              label: 'Share with friends',
               uri: `line://msg/text/?${encodeURI(sharedText)}`,
             },
             {
               type: 'uri',
-              label: '提交新回應',
+              label: 'Submit a new response',
               uri: getArticleURL(data.selectedArticleId),
             },
           ],
@@ -137,14 +137,14 @@ export default async function askingReplyFeedback(params) {
         type: 'text',
         text:
           feedbackCount > 1
-            ? `感謝您與其他 ${feedbackCount - 1} 人的回饋。`
-            : '感謝您的回饋，您是第一個評論這個回應的人 :)',
+            ? `Thank you for your feedback with other  ${feedbackCount - 1} people.`
+            : 'Thank you for your feedback, you are the first to comment on this response. :)',
       },
       {
         type: 'text',
-        text: `💁 若您認為自己能回應得更好，歡迎到 ${getArticleURL(
+        text: `💁 If you think you can respond better, welcome to ${getArticleURL(
           data.selectedArticleId
-        )} 提交新的回應唷！`,
+        )} Submit a new response!`,
       },
     ];
 
@@ -155,7 +155,7 @@ export default async function askingReplyFeedback(params) {
       {
         type: 'text',
         text:
-          '請點擊上面的「是」、「否」對回應表達意見，或改轉傳其他訊息給我查詢。',
+          'Please click "Yes" or "No" above to express your opinion on the response, or change the other information to me.',
       },
     ];
 

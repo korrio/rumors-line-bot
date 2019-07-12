@@ -14,7 +14,7 @@ export default async function askingArticleSource(params) {
     replies = [
       {
         type: 'text',
-        text: `請輸入 1～${data.articleSources.length} 的數字，選擇訊息來源。`,
+        text: `Please enter a number from 1～${data.articleSources.length} to select the source.`,
       },
     ];
     state = 'ASKING_ARTICLE_SOURCE';
@@ -29,11 +29,11 @@ export default async function askingArticleSource(params) {
       {
         type: 'template',
         altText:
-          '好的，建議您把訊息轉傳給 MyGoPen 或蘭姆酒吐司，兩個都是很專業的謠言破解網站，而且有 💁 專人為您解答喔！',
+          'Ok, I suggest you pass the message to MyGoPen or rum toast. Both are very professional rumors and you have a 💁 someone to answer your questions!',
         template: {
           type: 'confirm',
           text:
-            '好的，建議您把訊息轉傳給 MyGoPen 或蘭姆酒吐司，兩個都是很專業的謠言破解網站，而且有 💁 專人為您解答喔！',
+            'Ok, I suggest you pass the message to MyGoPen or rum toast. Both are very professional rumors and you have a 💁 someone to answer your questions!',
           actions: [
             {
               type: 'uri',
@@ -58,11 +58,11 @@ export default async function askingArticleSource(params) {
   ) {
     // articles that are already reported
     const altText =
-      '【跟編輯說您的疑惑】\n' +
-      '好的，謝謝您。若您覺得這是一則謠言，請指出您有疑惑之處，說服編輯這是一份應該被闢謠的訊息。\n' +
+      '[Talk to the editor about your doubts] \n' +
+      'Ok, thank you. If you think this is a rumor, please point out that you have doubts and persuade the editor that this is a message that should be blamed. \n' +
       '\n' +
-      '請按左下角「⌨️」鈕，把「為何您會覺得這是一則謠言」的理由傳給我們，幫助闢謠編輯釐清您的疑惑；\n' +
-      '若想跳過，請輸入「n」。';
+      'Please click on the "⌨️" button in the lower left corner to send us the reason why "what you think is a rumor" to help the editors to clarify your doubts;\n' +
+      'If you want to skip, please enter "n"。';
 
     replies = [
       {
@@ -76,7 +76,7 @@ export default async function askingArticleSource(params) {
             contents: [
               {
                 type: 'text',
-                text: '跟編輯說您的疑惑',
+                text: 'Tell your doubts with the editor',
                 weight: 'bold',
                 color: '#009900',
                 size: 'sm',
@@ -91,7 +91,7 @@ export default async function askingArticleSource(params) {
               {
                 type: 'text',
                 text:
-                  '好的，謝謝您。若您希望闢謠的好心人可以關注這一篇，請按「我也想知道」告訴大家你的想法。',
+                  'Ok, thank you. If you want to be ignorant, you can follow this one, please click "I want to know" to tell everyone your thoughts.',
                 wrap: true,
               },
             ],
@@ -105,7 +105,7 @@ export default async function askingArticleSource(params) {
                 style: 'primary',
                 action: {
                   type: 'uri',
-                  label: '🙋 我也想知道',
+                  label: '🙋 Oh, I want to know too.',
                   uri: getLIFFURL(
                     'ASKING_REPLY_REQUEST_REASON',
                     data.searchedText,
@@ -126,7 +126,7 @@ export default async function askingArticleSource(params) {
     replies = [
       {
         type: 'text',
-        text: '好的，謝謝您。',
+        text: 'Ok, thank you.',
       },
     ].concat(
       createAskArticleSubmissionReply(

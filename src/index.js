@@ -75,7 +75,7 @@ const singleUserHandler = async (
     replies: [
       {
         type: 'text',
-        text: '我們還不支援文字以外的訊息唷！',
+        text: 'We dont support messages other than text!',
       },
     ],
   };
@@ -142,7 +142,7 @@ const singleUserHandler = async (
         replies: [
           {
             type: 'text',
-            text: '糟糕，bot 故障了。可以再傳一次嗎？ QQ',
+            text: 'Oops, the bot is out of order. Try sending again?',
           },
         ],
       };

@@ -33,6 +33,7 @@
     "@line/bot-sdk": "^6.0.0",
     "babel-polyfill": "^6.23.0",
     "babel-runtime": "^6.22.0",
+    "google-auth-library": "^4.2.5",
     "googleapis": "^36.0.0",
     "grapheme-splitter": "^1.0.4",
     "koa": "^2.5.0",

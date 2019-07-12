@@ -99,25 +99,25 @@ export default async function initState(params) {
       altText: edgesSortedWithSimilarity
         .map(
           ({ node: { text } }, idx) =>
-            `選擇請打 ${idx + 1}> ${ellipsis(text, 20, '')}`
+            `Please choose to play ${idx + 1}> ${ellipsis(text, 20, '')}`
         )
-        .concat(hasIdenticalDocs ? [] : ['若以上皆非，請打 0。'])
+        .concat(hasIdenticalDocs ? [] : ['If none of the above, please enter "0"。'])
         .join('\n\n'),
       template: {
         type: 'carousel',
         columns: edgesSortedWithSimilarity
           .map(({ node: { text }, similarity }, idx) => ({
-            text: `[相似度:${(similarity * 100).toFixed(2) +
+            text: `[Similarity:${(similarity * 100).toFixed(2) +
               '%'}] \n ${ellipsis(text, 100, '')}`,
-            actions: [createPostbackAction('選擇此則', idx + 1, issuedAt)],
+            actions: [createPostbackAction('Choose this', idx + 1, issuedAt)],
           }))
           .concat(
             hasIdenticalDocs
               ? []
               : [
                   {
-                    text: '這裡沒有一篇是我傳的訊息。',
-                    actions: [createPostbackAction('選擇', 0, issuedAt)],
+                    text: 'No one here is a message from me. ',
+                    actions: [createPostbackAction('Select', 0, issuedAt)],
                   },
                 ]
           ),
@@ -127,11 +127,11 @@ export default async function initState(params) {
     replies = [
       {
         type: 'text',
-        text: `幫您查詢「${articleSummary}」的相關回應。`,
+        text: `Help you inquire「${articleSummary}」related response。`,
       },
       {
         type: 'text',
-        text: '請問下列文章中，哪一篇是您剛才傳送的訊息呢？',
+        text: 'Which of the following articles is the message you just sent? ',
       },
       templateMessage,
     ];
@@ -149,8 +149,8 @@ export default async function initState(params) {
         {
           type: 'text',
           text:
-            '你傳的資訊太少，無法為你搜尋資料庫噢！\n' +
-            '正確使用方式，請參考📖使用手冊 http://bit.ly/cofacts-line-users',
+            'The information you have sent is too small to search the database for you! \n' +
+            'For correct use, please refer to the 📖 manual http://bit.ly/cofacts-line-users',
         },
       ];
       state = '__INIT__';
@@ -164,15 +164,15 @@ export default async function initState(params) {
 
       data.articleSources = ARTICLE_SOURCES;
       const altText =
-        `找不到關於「${articleSummary}」訊息耶 QQ\n` +
+        `Can't find message about \n` +
         '\n' +
-        '請問您是從哪裡看到這則訊息呢？\n' +
+        'Where did you see this message from? \n' +
         '\n' +
         data.articleSources
           .map((option, index) => `${option} > 請傳 ${index + 1}\n`)
           .join('') +
         '\n' +
-        '請按左下角「⌨️」鈕輸入選項編號。';
+        'Please press the "⌨️" button in the lower left corner to enter the option number. ';
 
       replies = [
         {
@@ -180,7 +180,7 @@ export default async function initState(params) {
           altText,
           template: {
             type: 'buttons',
-            text: `找不到關於「${articleSummary}」訊息耶 QQ\n請問您是從哪裡看到這則訊息呢？`,
+            text: `Can't find out about「${articleSummary}」\n Where did you see this message from?`,
             actions: data.articleSources.map((option, index) =>
               createPostbackAction(option, index + 1, issuedAt)
             ),
