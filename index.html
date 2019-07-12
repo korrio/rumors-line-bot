@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>傳訊息給 Cofacts</title>
+  <title>PLATFORM: Cofacts</title>
   <style>
     * {
       box-sizing: border-box;
@@ -167,7 +167,7 @@ To add information, please click "Cancel"; feel like sending it out now, please 
 
       liff.init(({context: {userId}}) => {
         toggleForm(true);
-        fetch(`https://rumor-line-bot.ngrok.io/context/${userId}`).then(resp => resp.json()).then(data => {
+        fetch(`https://1fbf6d03.ngrok.io/context/${userId}`).then(resp => resp.json()).then(data => {
           if(!data || data.state !== state || data.issuedAt.toString() !== issuedAt ) {
             alert('Because you have sent a new message, this old button is no longer moving.！');
             liff.closeWindow();
