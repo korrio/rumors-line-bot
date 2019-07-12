@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: 'heroku-line-bot',
-      script: 'build/index.js',
+      script: 'src/index.js',
 
       // From Heroku production
       // Can't use process.env directly, or it will mess up with pm2 internals

@@ -90,12 +90,10 @@ export function getLIFFURL(state, text, prefix, issuedAt) {
  */
 export function createAskArticleSubmissionReply(state, text, prefix, issuedAt) {
   const altText =
-    '【Send a message to the public database? 】\n' +
+//    '【Send a message to the public database?】\n' +
     'If this is「Forward message」，And you think this is probably a「rumor」，Please send this message to the public database for documentation, so that the good people can verify and reply.\n' +
     '\n' +
-    'Although you will not receive the verification results immediately, you can help those who also receive this message in the future.\n' +
-    '\n' +
-    '📱 Please complete the operation on your 智慧 smartphone.';
+    'Although you will not receive the verification results immediately, you can help those who also receive this message in the future.\n';
 
   return [
     {
