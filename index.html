@@ -81,33 +81,33 @@
       const $textarea = document.querySelector('.reason');
       switch(state){
         case 'ASKING_ARTICLE_SUBMISSION_REASON':
-          $prompt.innerText = `您即將把「${text}」送入公開資料庫建檔。為了協助查證，請告訴闢謠編輯：`;
-          $reasonLabel.innerText = '為何您覺得這是謠言？';
-          $textarea.placeholder = '例：我用 OO 關鍵字查詢 Facebook，發現⋯⋯ / 我在 XX 官網上找到不一樣的說法如下⋯⋯'
+          $prompt.innerText = `You are about to send「${text}」to the public database. In order to assist with the verification, please tell the plaque editor:`;
+          $reasonLabel.innerText = 'Why do you think this is a rumor?';
+          $textarea.placeholder = 'Example: I use the OO keyword to query Facebook and find that ___ / I found a different statement on the XX official website as follows ___'
           break;
         case 'ASKING_REPLY_REQUEST_REASON':
-          $prompt.innerText = `有人跟你一樣對「${text}」有疑問。為了協助查證，請告訴闢謠編輯：`;
-          $reasonLabel.innerText = '為何您覺得這是謠言？';
-          $textarea.placeholder = '例：我用 OO 關鍵字查詢 Facebook，發現⋯⋯ / 我在 XX 官網上找到不一樣的說法如下⋯⋯'
+          $prompt.innerText = `Someone has questions about「${text}」like you. In order to assist with the verification, please tell the plaque editor:`;
+          $reasonLabel.innerText = 'Why do you think this is a rumor?';
+          $textarea.placeholder = 'Example: I use the OO keyword to query Facebook and find that ___ / I found a different statement on the XX official website as follows ___'
           break;
         case 'ASKING_REPLY_FEEDBACK':
-          $prompt.innerText = `很遺憾您覺得「${text} 」這則回應沒有幫助。`;
-          $reasonLabel.innerText = '請問您覺得怎麼改才會更有幫助呢？'
+          $prompt.innerText = `I regret that you think「${text} 」This response did not help.`;
+          $reasonLabel.innerText = 'How do you feel that it will be more helpful?'
           break;
         default:
-          $prompt.innerText = '請提供理由：';
+          $prompt.innerText = 'Please provide reasons：';
           break;
       }
       
       const MIN_REASON_LENGTH = 15;
       const SUFFICIENT_REASON_LENGTH = 40;
       const $submitButton = document.querySelector('#submit-button');
-      $submitButton.innerText = `還要寫 ${MIN_REASON_LENGTH} 字才能送出訊息唷！`
+      $submitButton.innerText = `Minimum ${MIN_REASON_LENGTH} words then you can send messages!`
       $textarea.addEventListener('input', e => {
         e.preventDefault();
         const text = e.target.value;
         if (text.length < MIN_REASON_LENGTH) {
-          $submitButton.innerText = `還要寫 ${MIN_REASON_LENGTH - text.length} 字才能送出訊息唷！`;
+          $submitButton.innerText = `Minimum ${MIN_REASON_LENGTH - text.length} words then you can send messages! `;
           $submitButton.style.background = 'silver';
         } else {
           if (text.length >= MIN_REASON_LENGTH && text.length < SUFFICIENT_REASON_LENGTH) {
@@ -115,18 +115,18 @@
           } else {
             $submitButton.style.backgroundColor = 'greenyellow';
           }
-          $submitButton.innerText = '確定送出';
+          $submitButton.innerText = 'Are you sure sending message ?';
         }
       })
 
       const $form = document.querySelector('#form');
       const lengthenHint = `
-你可以試著：
-A. 闡述更多想法
-B. 去 google 查查看
-C. 把全文複製貼上到 Facebook 搜尋框看看
+You can try:
+A. Explain more ideas
+B. Go to google check
+C. Paste the full text copy into the Facebook search box to see
 
-把你的結果傳給編輯參考吧！
+Pass your results to the editorial reference!
       `
       $form.addEventListener('submit', e => {
         e.preventDefault();
@@ -136,23 +136,23 @@ C. 把全文複製貼上到 Facebook 搜尋框看看
            state === 'ASKING_REPLY_REQUEST_REASON') {
           if(reason.length < MIN_REASON_LENGTH) {
             alert(`
-您提供的資訊太少，編輯無法幫您查詢。
+There is too little information you can provide more information.
 
 ${lengthenHint}
             `);
             return;
           } else if(reason.length < SUFFICIENT_REASON_LENGTH) {
             if(!confirm(`
-提供給編輯的資訊可以再豐富一些，會讓編輯回覆越快唷！
+The information provided to the editor can be enriched, and the editor will respond more quickly.！
 
 ${lengthenHint}
 
-若要補充資訊，請按「取消」；覺得現在這樣送出就好，請按「確定」
+To add information, please click "Cancel"; feel like sending it out now, please click "OK"
             `)) {
               return;
             }
           } else if (reason === text) {
-            alert(`您提供的資訊不應該與訊息原文相同。`);
+            alert(`The information you provide should not be the same as the original message.`);
             return;
           }
         }
@@ -169,7 +169,7 @@ ${lengthenHint}
         toggleForm(true);
         fetch(`https://rumor-line-bot.ngrok.io/context/${userId}`).then(resp => resp.json()).then(data => {
           if(!data || data.state !== state || data.issuedAt.toString() !== issuedAt ) {
-            alert('因為您傳了新的訊息進來，所以這顆舊按鈕已經不會動囉！');
+            alert('Because you have sent a new message, this old button is no longer moving.！');
             liff.closeWindow();
           }
         }).catch(alert)
